@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+body {
+	color: white;
+	background-color: darkgreen;
+
+}
+
+#xyz {
+	
+	background-color: darkred;
+	
+}
+
+img {
+	position: fixed;
+	
+}
