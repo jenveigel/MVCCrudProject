@@ -7,24 +7,19 @@ h1 {
 
 body {
 	color: white;
-	background-image: url("http://www.wikihow.com/images/b/b1/1080-Tailgrab-on-a-Tech-Deck-Step-4.jpg");
-	background-repeat: no repeat;
-	background-size: 500px;
+	background-image: url("https://wallpaperlayer.com/img/2015/10/christmas-ornaments-wallpaper-8562-8888-hd-wallpapers.jpg");
 	background-position: center;
 	
-	
-
 }
 
 
 #xyz {
 	
-	background-color: darkred;
+font-family: cursive;
 	
 }
 
-img {
-	position: fixed;
-	padding: 10px;
-	
+.all {
+	align-content: right;
 }
+
