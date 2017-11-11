@@ -12,12 +12,13 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
 	crossorigin="anonymous">
-<!--  <link rel="stylesheet" href="css/style.css">  -->
+<link rel="stylesheet" href="css/style.css"> 
 <title>Christmas List</title>
 </head>
 
 <body>
-	<h3>The Spirit of Giving</h3>
+
+	<h1 align="center">The Spirit of Giving</h1>
 
 <div align="center">
 	<div class="container-fluid"></div>
@@ -36,7 +37,7 @@
 	
 	<br>
 	<div id=xyz>
-		<img height=60 src="images/box_xmas_3d.jpg" alt="xmas Boxes">
+		<img height=200 align=center src="images/box_xmas_3d.jpg" alt="xmas Boxes">
 		<p>
 			....................We wish you a merry Christmas...<br>
 			<br>
@@ -49,7 +50,7 @@
 	All Christmas Lists:<br>
 <c:forEach var="li" items="${list}">
 	
-	<a href="details.do?id=${li.id}">${li.name}</a>
+	<a href="giftDetails.do?id=${li.id}">${li.recipient}</a>
 	<form method="post" action="delete.do">
 		<input type="submit" value="Delete">
 		<input type="hidden" name="id" value="${li.id}">

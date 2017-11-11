@@ -19,20 +19,20 @@ import com.skilldistillery.xmasList.data.XmasList;
 import com.skilldistillery.xmasList.data.XmasListDAO;
 
 @Controller
-@SessionAttributes({"giftsToBuy", "giftsPurchased"})
+@SessionAttributes("toBuy")
 public class XmasListController {
 	
 	@Autowired
 	XmasListDAO dao;
 	
-	@ModelAttribute("giftsToBuy")
+	@ModelAttribute("toBuy")
 	public XmasList newXmasList() {
 		return new XmasList();
 	}
 	
 	@RequestMapping(path="details.do")
 	public ModelAndView getXmasListById(@RequestParam("xmasListId") Integer id) {
-		ModelAndView mv = new ModelAndView("details");
+		ModelAndView mv = new ModelAndView("giftDetails");
 		XmasList toBuy = dao.getXmasListById(id);
 		mv.addObject("giftsToBuy", toBuy);
 		return mv;
@@ -42,7 +42,7 @@ public class XmasListController {
 	public ModelAndView delete(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView("deleted");
 		XmasList toBuy = dao.getXmasListById(id);
-		mv.addObject("name", toBuy.getRecipient());
+		mv.addObject("recipient", toBuy.getRecipient());
 		dao.deleteXmasList(toBuy);
 		return mv;
 	}
@@ -57,12 +57,12 @@ public class XmasListController {
 	
 	@RequestMapping(path="getXmasList.do", method=RequestMethod.POST)
 	public ModelAndView getXmasListByIdForm(@Valid @ModelAttribute("idForm")XmasListIdForm xlif, Errors e) {
-		ModelAndView mv = new ModelAndView("index2");
+		ModelAndView mv = new ModelAndView("index");
 		if (e.hasErrors()) {
 			mv.setViewName("index");
 			return mv;
 		}
-		mv.setViewName("details");
+		mv.setViewName("giftDetails");
 		XmasList toBuy = dao.getXmasListById(xlif.getId());
 		mv.addObject("xmasList", toBuy);	
 		return mv;
@@ -72,7 +72,7 @@ public class XmasListController {
 		return "index";
 	}
 	
-	@RequestMapping(path="home.do", method=RequestMethod.GET)
+	@RequestMapping(path="index.do", method=RequestMethod.GET)
 	public ModelAndView homeWithValidation() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index");
@@ -99,7 +99,7 @@ public class XmasListController {
 			return mv;
 		}
 		dao.addXmasList(xmasList);
-		mv.setViewName("added");
+		mv.setViewName("giftDetails");
 		return mv;
 	}
 	
@@ -111,7 +111,7 @@ public class XmasListController {
 			return mv;
 		}
 		dao.updateXmasList(xmasList);
-		mv.setViewName("added");
+		mv.setViewName("giftDetails");
 		return mv;
 	}
 	

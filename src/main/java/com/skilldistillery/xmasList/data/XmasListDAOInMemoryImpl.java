@@ -36,10 +36,7 @@ public class XmasListDAOInMemoryImpl implements XmasListDAO {
 	@Override
 	public List<XmasList> getAllXmasLists() {
 		//trying to understand 
-		//return new ArrayList<XmasList>(xmasLists.values());
-		List<XmasList> xlist = new ArrayList<>();
-		xlist = (List<XmasList>) xmasLists.values();
-		return xlist;
+		return new ArrayList<XmasList>(xmasLists.values());
 	}
 
 	@Override
