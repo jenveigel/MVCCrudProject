@@ -39,9 +39,9 @@
 		<img height=60 src="images/box_xmas_3d.jpg" alt="xmas Boxes">
 		<p>
 			....................We wish you a merry Christmas...<br>
-			...........................We wish you a merry Christmas...<br>
+			<br>
 			...............................We wish you a merry Christmas...<br>
-			...................................We wish you a merry Christmas...<br>
+			<br>
 		</p>
 	</div>
 	<br>
@@ -63,9 +63,9 @@
 </c:forEach>
 	
 	
-	<c:if test="${not empty giftsToBuy}">
+	<%-- <c:if test="${not empty giftsToBuy}">
 Left to Buy: ${giftsToBuy}
-</c:if>
+</c:if> --%>
 
 
 

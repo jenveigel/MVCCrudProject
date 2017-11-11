@@ -14,6 +14,7 @@ public class XmasListDAOInMemoryImpl implements XmasListDAO {
 
 	Map<Integer, XmasList> xmasLists;
 	List<XmasList> x = new ArrayList<>();
+	private int id = 1;
 	
 	public XmasListDAOInMemoryImpl() {
 		xmasLists = new HashMap<>();
@@ -21,13 +22,14 @@ public class XmasListDAOInMemoryImpl implements XmasListDAO {
 	}
 
 	private void loadSampleXmasLists() {
-		xmasLists.put(1, new XmasList("Mom", "candle", 1, "it's cheap", 8.0));
-		xmasLists.put(2, new XmasList("Dad", "tie", 2, "he's always at work", 17.0));
-		xmasLists.put(3, new XmasList("Baby Sister", "nothing", 3, "she won't remember anyway", 0.0));
+		xmasLists.put(id, new XmasList("Mom", "candle", id++, "it's cheap", 8.0));
+		xmasLists.put(id, new XmasList("Dad", "tie", id++, "he's always at work", 17.0));
+		xmasLists.put(id, new XmasList("Baby Sister", "nothing", id++, "she won't remember anyway", 0.0));
 	}
 
 	@Override
 	public XmasList addXmasList(XmasList x) {
+		x.setGiftId(id++);
 		return xmasLists.put(x.getId(), x);
 	}
 
