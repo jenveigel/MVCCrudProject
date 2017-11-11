@@ -87,8 +87,7 @@ public class XmasListController {
 	@RequestMapping(path="add.do", method=RequestMethod.GET)
 	public String addXmasList(Model model) {
 		XmasList xl = new XmasList();
-		model.addAttribute("xmasList", xl);
-		
+		model.addAttribute("xmasList", xl);	
 		return "add";
 	}
 	
