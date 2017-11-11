@@ -24,11 +24,22 @@ public class XmasListController {
 		return new XmasList();
 	}
 	
-	@RequestMapping(path="getXmasList.do", method=RequestMethod.POST, params="xmasListId")
+	@RequestMapping(path="details.do")
 	public ModelAndView getXmasListById(@RequestParam("xmasListId") Integer id) {
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("details");
 		XmasList toBuy = dao.getXmasListById(id);
 		mv.addObject("giftsToBuy", toBuy);
+		return mv;
+	}
+	
+	@RequestMapping(path="delete.do")
+	public ModelAndView delete(@RequestParam("id") Integer id) {
+		ModelAndView mv = new ModelAndView("deleted");
+		
+		XmasList toBuy = dao.getXmasListById(id);
+		mv.addObject("name", toBuy.getRecipient());
+		dao.deleteXmasList(toBuy);
+		
 		return mv;
 	}
 	
