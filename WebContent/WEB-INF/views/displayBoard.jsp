@@ -8,40 +8,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Christmas List</title>
+<title>Display Board of Lists</title>
 </head>
 
 <body>
 
 
-	<h1 align="center"><p><p>The Spirit of Giving</p></p></h1>
+	<h1 align="center"><p><p>All Christmas Lists</p></p></h1>
 
-	<div align="center">
-		
-
-		<form:form action="getXmasList.do" method="post"
-			modelAttribute="idForm">
-			<form:input path="id" />
-			<form:errors path="id" />
-
-			<input type="submit" value="Look at your list">
-		</form:form>
-
-	</div>
-	
-
-
-      <p>
-		<a href="add.do">Add a Christmas List</a>
-	  </p>
-   
-	<div class="all">
-		<p>
-		  <a href="displayAllLists.do">All Christmas Lists:</a><br>
-		</p>
 	
 	
-	<%-- <c:forEach var="li" items="${list}">
+	
+	<c:forEach var="li" items="${list}">
 
 		<a href="giftDetails.do?id=${li.id}">${li.recipient}</a>
 		<form method="post" action="delete.do">
@@ -56,15 +34,7 @@
 		</form>
 		<br>
 
-	</c:forEach> --%>
-
-
-
-
-	<%-- <c:if test="${not empty giftsToBuy}">
-Left to Buy: ${giftsToBuy}
-</c:if> --%>
-
+	</c:forEach>
 
 </body>
 </html>

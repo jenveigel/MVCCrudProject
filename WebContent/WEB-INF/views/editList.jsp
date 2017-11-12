@@ -6,16 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edit Details</title>
+<title>Edit Gift Data</title>
 </head>
-<body>
-<h3>Update details</h3>
 
-	<form:form action="updateXmasList.do" method="POST" modelAttribute="xmasList">
-		For: ${xmasList.recipient }<br>
-		Gift Idea: ${xmasList.giftItem }<br>
-		Cost: ${xmasList.cost }<br>
-		Because... ${xmasList.reason }<br>
+<body>
+<h3>Make Changes</h3>
+
+	<form:form action="updateXmasList.do" method="POST" modelAttribute="xmasList"><br>
+		Recipient Name: <form:input path="recipient"/><form:errors path="recipient"/><br>
+		Gift Idea: <form:input path="giftItem"/><form:errors path="giftItem"/><br>
+		Approximate Cost: <form:input path="cost"/><form:errors path="cost"/><br>
+		Reason: <form:input path="reason"/><form:errors path="reason"/><br>
 		<form:hidden path="id"/>
 		<input type="submit" value="Done">
 	</form:form>

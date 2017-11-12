@@ -30,11 +30,11 @@ public class XmasListController {
 		return new XmasList();
 	}
 	
-	@RequestMapping(path="details.do")
-	public ModelAndView getXmasListById(@RequestParam("xmasListId") Integer id) {
+	@RequestMapping(path="giftDetails.do")
+	public ModelAndView getXmasListById(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView("giftDetails");
 		XmasList toBuy = dao.getXmasListById(id);
-		mv.addObject("giftsToBuy", toBuy);
+		mv.addObject("xmasList", toBuy);
 		return mv;
 	}
 	
@@ -43,17 +43,19 @@ public class XmasListController {
 		ModelAndView mv = new ModelAndView("deleted");
 		XmasList toBuy = dao.getXmasListById(id);
 		mv.addObject("recipient", toBuy.getRecipient());
+		mv.addObject("giftItem", toBuy.getGiftItem());
 		dao.deleteXmasList(toBuy);
 		return mv;
 	}
 	
-	@RequestMapping(path = "update.do", params="id")
+	@RequestMapping(path="update.do", params="id")
 	public ModelAndView update(@RequestParam("id") Integer id) {
-		ModelAndView mv = new ModelAndView("update");
+		ModelAndView mv = new ModelAndView("editList");
 		XmasList toBuy = dao.getXmasListById(id);
 		mv.addObject("xmasList", toBuy);
 		return mv;
 	}
+	
 	
 	@RequestMapping(path="getXmasList.do", method=RequestMethod.POST)
 	public ModelAndView getXmasListByIdForm(@Valid @ModelAttribute("idForm")XmasListIdForm xlif, Errors e) {
@@ -73,15 +75,16 @@ public class XmasListController {
 	}
 	
 	@RequestMapping(path="index.do", method=RequestMethod.GET)
-	public ModelAndView homeWithValidation() {
+	public ModelAndView indexWithValidation() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index");
 		XmasListIdForm xlif = new XmasListIdForm();
 		mv.addObject("idForm", xlif);
-		
 		List<XmasList> allLists = dao.getAllXmasLists();
 		mv.addObject("list", allLists);
 		return mv;
+		
+		
 	}
 	
 	@RequestMapping(path="add.do", method=RequestMethod.GET)
@@ -90,6 +93,19 @@ public class XmasListController {
 		model.addAttribute("xmasList", xl);	
 		return "add";
 	}
+	
+	@RequestMapping(path="displayAllLists.do", method=RequestMethod.GET)
+	public ModelAndView displayXmasList() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("displayBoard");
+		XmasListIdForm xlif = new XmasListIdForm();
+		mv.addObject("idForm", xlif);
+		List<XmasList> allLists = dao.getAllXmasLists();
+		mv.addObject("list", allLists);
+		return mv;
+	}
+	
+	
 	
 	@RequestMapping(path="addXmasList.do", method=RequestMethod.POST)
 	public ModelAndView doAdd(@Valid XmasList xmasList, Errors e) {
@@ -107,7 +123,7 @@ public class XmasListController {
 	public ModelAndView doUpdate(@Valid XmasList xmasList, Errors e) {
 		ModelAndView mv = new ModelAndView();
 		if(e.hasErrors()) {
-			mv.setViewName("update");
+			mv.setViewName("editList");
 			return mv;
 		}
 		dao.updateXmasList(xmasList);
