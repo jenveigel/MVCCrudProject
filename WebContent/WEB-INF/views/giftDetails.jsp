@@ -14,7 +14,7 @@ Cost: ${xmasList.cost }<br>
 Because... ${xmasList.reason }<br>
 </div>
 <p>
-<a href="index.do">Home</a>
+<a href="displayAllLists.do">Back to Gift Ideas</a>
 </p>
 </body>
 </html>

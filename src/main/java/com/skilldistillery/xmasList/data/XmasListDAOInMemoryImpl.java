@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class XmasListDAOInMemoryImpl implements XmasListDAO {
 
 	Map<Integer, XmasList> xmasLists;
-	List<XmasList> x = new ArrayList<>();
+	
 	private int id = 1;
 	
 	public XmasListDAOInMemoryImpl() {

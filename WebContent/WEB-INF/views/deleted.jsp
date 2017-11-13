@@ -8,6 +8,6 @@
 </head>
 <body>
 <h3>${recipient}'s ${giftItem} Removed</h3>
-<a href="index.do">Home</a>
+<a href="displayAllLists.do">Back to Lists</a>
 </body>
 </html>

@@ -12,6 +12,24 @@ body {
 	
 }
 
+.nextPageLink {
+	color: yellow;
+}
+
+a {
+	color: yellow;
+	font-family: cursive;
+	font-size: 1.5em;
+ 
+}
+
+a:hover {
+	background-color: white;
+    color: darkgreen;
+}
+
+
+
 
 #xyz {
 	

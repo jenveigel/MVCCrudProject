@@ -5,7 +5,7 @@
 	version="3.1">
   <display-name>XmasList</display-name>
   <welcome-file-list>
-    <welcome-file>index.do</welcome-file>
+    <welcome-file>home.do</welcome-file>
   </welcome-file-list>
   
   <!-- needed for ContextLoaderListener -->

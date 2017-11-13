@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Display Board of Lists</title>
+<title>Display Board of Gift Ideas</title>
 </head>
 
 <body>
@@ -19,18 +19,18 @@
 	
 	
 	
-	<c:forEach var="li" items="${list}">
+	<c:forEach var="list" items="${list}">
 
-		<a href="giftDetails.do?id=${li.id}">${li.recipient}</a>
+		<a href="giftDetails.do?id=${list.id}">${list.recipient}</a>
 		<form method="post" action="delete.do">
 			<input type="submit" value="Delete"> <input type="hidden"
-				name="id" value="${li.id}">
+				name="id" value="${list.id}">
 		</form>
 		<br>
 
 		<form method="post" action="update.do">
 			<input type="submit" value="Update"> <input type="hidden"
-				name="id" value="${li.id}">
+				name="id" value="${list.id}">
 		</form>
 		<br>
 
