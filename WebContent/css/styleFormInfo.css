@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+h1 {
+	background-color: darkgreen;
+	font-family: cursive;
+}
+
+body {
+	padding: 10px;
+	color: white;
+	background-image: url("https://wallpaperlayer.com/img/2015/10/christmas-ornaments-wallpaper-8562-8888-hd-wallpapers.jpg");
+	background-position: center;
+}
+
+table {
+	font-family: cursive;
+	font-size: 2em;
+  border-style: solid;
+  border-width: thick;
+  border-color: #34ab3e;
+}
+
+th {
+  border-style: solid;
+  font-weight: bold;
+  color: white;
+  border-color: #34ab3e;
+  text-align: center;
+}
+
+td {
+  border-style: none;
+  padding: 10px;
+  color: silver;
+  text-align: center;
+  border-color: #34ab3e;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	color: yellow;
+	font-family: cursive;
+	font-size: 1.5em;
+}
+
+a:hover {
+	background-color: white;
+    color: darkgreen;
+}
+
+
+
+
+#xyz {
+	
+font-family: cursive;
+	
+}
+
+.all {
+	align-content: right;
+}
+
