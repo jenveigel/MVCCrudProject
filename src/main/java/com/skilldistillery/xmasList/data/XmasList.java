@@ -55,7 +55,7 @@ public class XmasList {
 		return id;
 	}
 
-	public void setGiftId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

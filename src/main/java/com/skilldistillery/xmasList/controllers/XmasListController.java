@@ -90,6 +90,7 @@ public class XmasListController {
 	public ModelAndView update(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView("editList");
 		XmasList xl = dao.getXmasListById(id);
+		System.out.println("xmas list by id:" +xl);
 		mv.addObject("xmasList", xl);
 		return mv;
 	}
@@ -101,6 +102,7 @@ public class XmasListController {
 			mv.setViewName("editList");
 			return mv;
 		}
+		System.out.println(xmasList);
 		dao.updateXmasList(xmasList);
 		mv.setViewName("giftDetails");
 		return mv;

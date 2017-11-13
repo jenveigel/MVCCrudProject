@@ -29,7 +29,7 @@ public class XmasListDAOInMemoryImpl implements XmasListDAO {
 
 	@Override
 	public XmasList addXmasList(XmasList x) {
-		x.setGiftId(id++);
+		x.setId(id++);
 		return xmasLists.put(x.getId(), x);
 	}
 
