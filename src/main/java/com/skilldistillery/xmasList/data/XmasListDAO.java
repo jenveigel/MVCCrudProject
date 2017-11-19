@@ -8,7 +8,7 @@ public interface XmasListDAO {
 	XmasList getXmasListById(int id);   
 	XmasList updateXmasList(XmasList x);
 	XmasList deleteXmasList(int id);
-	List<XmasList> returnList();
-	XmasList findXmasListById(int id);
+//	List<XmasList> returnList();
+//	XmasList findXmasListById(int id);
 
 }

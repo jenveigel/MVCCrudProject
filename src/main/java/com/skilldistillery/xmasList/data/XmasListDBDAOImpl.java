@@ -195,22 +195,22 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		return xmasListDelete;
 	}
 
-	@Override
-	public List<XmasList> returnList() {
-		// TODO Auto-generated method stub
-		return xl;
-	}
-
-	@Override
-	public XmasList findXmasListById(int id) {
-		XmasList x = null;
-		for (XmasList xmasList : xl) {
-			if (xmasList.getId() == id) {
-				x = xmasList;
-			}
-		}
-		return x;
-	}
+//	@Override
+//	public List<XmasList> returnList() {
+//		// TODO Auto-generated method stub
+//		return xl;
+//	}
+//
+//	@Override
+//	public XmasList findXmasListById(int id) {
+//		XmasList x = null;
+//		for (XmasList xmasList : xl) {
+//			if (xmasList.getId() == id) {
+//				x = xmasList;
+//			}
+//		}
+//		return x;
+//	}
 
 //	@Override
 //	public void deleteXmasList(int id) {
