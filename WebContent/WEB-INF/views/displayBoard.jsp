@@ -19,65 +19,64 @@
 
 <body>
 
+	<h1 align="center">
+		<p>
+		<p>All Christmas Lists</p>
+		</p>
+	</h1>
 
-	<h1 align="center"><p><p>All Christmas Lists</p></p></h1>
-
-<div>
+	<%-- <div>
 Recipient:<form:select path="recipient">
-		<c:forEach var="recipient" items="${recipient }">
+		<c:forEach var="recipient" items="${xmasList}">
 			<form:option value="${xmasList.recipient}">${xmasList.recipient}</form:option>
 		</c:forEach>
 		</form:select>
-</div>
+</div> --%>
 
-<table>
-	<tr>
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col col-lg-2">
-  
-    </div>
-    <div class="col-md-auto">
-  	<a href="add.do">Add a Christmas List</a>
-    </div>
-    <div class="col col-lg-2">
-   
-    </div>
-  </div>
-  </div>
-  </tr>
- </table>
-	
-<ul>
-	<c:forEach var="list" items="${list}">
-  <li>
-    <a href="giftDetails.do?id=${list.id}">${list.recipient}<br>
-    	
-	<div class="pic"><img src="images/clipart_present.png" alt="clipart" height="70" width="70"></div>
-<table>
-<tr>
-<td>
-    		<form method="post" action="delete.do">
-			<input type="submit" value="Delete"> <input type="hidden"
-				name="id" value="${list.id}">
-		</form>
-</td>
-	<td>	 </td>	
-<td>
-		<form method="post" action="update.do">
-			<input type="submit" value="Update"> <input type="hidden"
-				name="id" value="${list.id}">
-		</form>
-</td>
-</tr>
-</table>
-    </a>
+	<table>
+		<tr>
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col col-lg-2"></div>
+					<div class="col-md-auto">
+						<a href="add.do">Add a Christmas List</a>
+					</div>
+					<div class="col col-lg-2"></div>
+				</div>
+			</div>
+		</tr>
+	</table>
 
-  </li>
-	</c:forEach>
-</ul>
-	
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	<ul>
+		<c:forEach var="list" items="${list}">
+			<li><a href="giftDetails.do?id=${list.id}">${list.recipient}<br>
+
+					<div class="pic">
+						<img src="images/clipart_present.png" alt="clipart" height="70"
+							width="70">
+					</div>
+					<table>
+						<tr>
+							<td>
+								<form method="post" action="delete.do">
+									<input type="submit" value="Delete"> <input
+										type="hidden" name="id" value="${list.id}">
+								</form>
+							</td>
+							<td></td>
+							<td>
+								<form method="post" action="update.do">
+									<input type="submit" value="Update"> <input
+										type="hidden" name="id" value="${list.id}">
+								</form>
+							</td>
+						</tr>
+					</table>
+			</a></li>
+		</c:forEach>
+	</ul>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script

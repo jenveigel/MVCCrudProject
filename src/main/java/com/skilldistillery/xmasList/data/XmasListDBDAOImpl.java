@@ -57,18 +57,22 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 
 	@Override
 	public List<XmasList> getAllXmasLists() {
-		List<XmasList> xl = new ArrayList();
+		xl = new ArrayList();
+		XmasList xmasList = null;
+		int id = 0;
 		try {
-			// try/catch for SQL Exception
-			System.out.println("You are in get all xmas list");
-//	********************************************************************
 			Connection conn = DriverManager.getConnection(url, user, pwd);
 			String sql = "SELECT id, recipient, giftItem, reason, cost FROM xmasList";
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				int id = rs.getInt(1);
-				xl.addAll(getAllXmasLists());
+				id = rs.getInt(1);
+				String recipient = rs.getString(2);
+				String giftItem = rs.getString(3);
+				String reason = rs.getString(4);
+				Double cost = rs.getDouble(5);
+				xl.add(xmasList);
 			}
 			rs.close();
 			stmt.close();
