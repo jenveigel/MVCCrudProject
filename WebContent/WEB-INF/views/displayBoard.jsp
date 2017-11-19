@@ -22,9 +22,34 @@
 
 	<h1 align="center"><p><p>All Christmas Lists</p></p></h1>
 
+<div>
+Recipient:<form:select path="recipient">
+		<c:forEach var="recipient" items="${recipient }">
+			<form:option value="${xmasList.recipient}">${xmasList.recipient}</form:option>
+		</c:forEach>
+		</form:select>
+</div>
+
+<table>
+	<tr>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+  
+    </div>
+    <div class="col-md-auto">
+  	<a href="add.do">Add a Christmas List</a>
+    </div>
+    <div class="col col-lg-2">
+   
+    </div>
+  </div>
+  </div>
+  </tr>
+ </table>
 	
-	<c:forEach var="list" items="${list}">
 <ul>
+	<c:forEach var="list" items="${list}">
   <li>
     <a href="giftDetails.do?id=${list.id}">${list.recipient}<br>
     	
@@ -49,8 +74,8 @@
     </a>
 
   </li>
-</ul>
 	</c:forEach>
+</ul>
 	
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -40,7 +40,7 @@ public class XmasListController {
 		mv.setViewName("index");
 		XmasListIdForm xlif = new XmasListIdForm();
 		mv.addObject("idForm", xlif);
-		
+//  ********************************************************************
 		List<XmasList> allLists = dao.getAllXmasLists();
 		mv.addObject("list", allLists);
 		return mv;
@@ -114,7 +114,7 @@ public class XmasListController {
 		XmasList toBuy = dao.getXmasListById(id);
 		mv.addObject("recipient", toBuy.getRecipient());
 		mv.addObject("giftItem", toBuy.getGiftItem());
-		dao.deleteXmasList(toBuy);
+		dao.deleteXmasList(id);
 		return mv;
 	}
 

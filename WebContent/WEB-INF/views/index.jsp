@@ -29,7 +29,7 @@
 			<form:input path="id" />
 			<form:errors path="id" />
 
-			<input type="submit" value="Look at your list">
+			<input type="submit" value="Select By ID">
 		</form:form>
 <br>
 <br>

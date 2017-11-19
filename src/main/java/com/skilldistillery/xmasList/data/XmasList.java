@@ -2,17 +2,17 @@ package com.skilldistillery.xmasList.data;
 
 public class XmasList {
 	
+	private int id;
 	private String recipient;
 	private String giftItem;
-	private int id;
 	private String reason;
 	private double cost;
 	
-	public XmasList(String recipient, String giftItem, int id, String reason, double cost) {
+	public XmasList(int id, String recipient, String giftItem, String reason, double cost) {
 		super();
+		this.id = id;
 		this.recipient = recipient;
 		this.giftItem = giftItem;
-		this.id = id;
 		this.reason = reason;
 		this.cost = cost;
 	}
