@@ -84,47 +84,31 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		}
 		return xl;
 	}
-
+	
 	@Override
-	// void or return type XmasList?
-	public XmasList addXmasList(XmasList xmasList) {
+	public void addXmasList(XmasList x) {
 		Connection conn = null;
 		String sql;
-		ResultSet rs = null;
-		XmasList xl = null;
 		try {
 			conn = DriverManager.getConnection(url, user, pwd);
 			conn.setAutoCommit(false);
 			sql = "INSERT INTO omg (id, recipient, giftItem, reason, cost) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			st.setInt(1, xmasList.getId());
-			st.setString(2, xmasList.getRecipient());
-			st.setString(3, xmasList.getGiftItem());
-			st.setString(4, xmasList.getReason());
-			st.setDouble(5, xmasList.getCost());
-			st.executeUpdate();
-
-			ResultSet keys = st.getGeneratedKeys();
-			if (keys.next()) {
-				int id = keys.getInt(1);
-				xmasList.setId(id);
-				sql = "SELECT id, recipient, giftItem, reason, cost FROM omg WHERE id = ?";
-				rs = st.executeQuery();
-				st.setInt(1, id);
-				if (rs.next()) {
-					id = rs.getInt(1);
-					String recipient = rs.getString(2);
-					String giftItem = rs.getString(3);
-					String reason = rs.getString(4);
-					Double cost = rs.getDouble(5);
-					xl = new XmasList(id, recipient, giftItem, reason, cost);
-				}
-			}
-			conn.commit();
-			rs.close();
-			st.close();
-			conn.close();
-		} catch (SQLException e) {
+			st.setInt(1, x.getId());
+			st.setString(2, x.getRecipient());
+ 			st.setString(3, x.getGiftItem());
+ 			st.setString(4, x.getReason());
+ 			st.setDouble(5, x.getCost());
+ 			st.executeUpdate();
+ 			
+ 			ResultSet keys = st.getGeneratedKeys();
+ 			if (keys.next()) {
+ 				int id = keys.getInt(1);
+ 				x.setId(id);
+ 			}
+ 			conn.commit();
+ 		}
+		catch (SQLException e) {
 			System.err.println("Error during inserts.");
 			System.err.println("SQL Error: " + e.getErrorCode() + ": " + e.getMessage());
 			System.err.println("SQL State: " + e.getSQLState());
@@ -137,12 +121,66 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 				}
 			}
 		}
-		return xl;
-		
 	}
 
+//	@Override
+//	// void or return type XmasList?
+//	public XmasList addXmasList(XmasList x) {
+//		Connection conn = null;
+//		String sql;
+//		ResultSet rs = null;
+//		XmasList xl = null;
+//		try {
+//			conn = DriverManager.getConnection(url, user, pwd);
+//			conn.setAutoCommit(false);
+//			sql = "INSERT INTO omg (id, recipient, giftItem, reason, cost) VALUES (?, ?, ?, ?, ?)";
+//			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//			st.setInt(1, x.getId());
+//			st.setString(2, x.getRecipient());
+//			st.setString(3, x.getGiftItem());
+//			st.setString(4, x.getReason());
+//			st.setDouble(5, x.getCost());
+//			st.executeUpdate();
+//
+//			ResultSet keys = st.getGeneratedKeys();
+//			if (keys.next()) {
+//				int id = keys.getInt(1);
+//				x.setId(id);
+//				sql = "SELECT id, recipient, giftItem, reason, cost FROM omg WHERE id = ?";
+//				rs = st.executeQuery();
+//				st.setInt(1, id);
+//				if (rs.next()) {
+//					id = rs.getInt(1);
+//					String recipient = rs.getString(2);
+//					String giftItem = rs.getString(3);
+//					String reason = rs.getString(4);
+//					Double cost = rs.getDouble(5);
+//					xl = new XmasList(id, recipient, giftItem, reason, cost);
+//				}
+//			}
+//			conn.commit();
+//			rs.close();
+//			st.close();
+//			conn.close();
+//		} catch (SQLException e) {
+//			System.err.println("Error during inserts.");
+//			System.err.println("SQL Error: " + e.getErrorCode() + ": " + e.getMessage());
+//			System.err.println("SQL State: " + e.getSQLState());
+//			if (conn != null) {
+//				try {
+//					conn.rollback();
+//				} catch (SQLException e1) {
+//					System.err.println("Error rolling back.");
+//					e1.printStackTrace();
+//				}
+//			}
+//		}
+//		return xl;
+//		
+//	}
+
 	@Override
-	public XmasList updateXmasList(XmasList x) {
+	public void updateXmasList(XmasList x) {
 		Connection conn = null;
 		String sql;
 		try {
@@ -172,7 +210,6 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 				}
 			}
 		}
-		return x;
 	}
 	
 	@Override
