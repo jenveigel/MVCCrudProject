@@ -186,13 +186,14 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		try {
 			conn = DriverManager.getConnection(url, user, pwd);
 			conn.setAutoCommit(false);
-			sql = "UPDATE omg SET recipient = ?, giftItem = ?, reason = ?, cost = ?)";
+			sql = "UPDATE omg SET recipient = ?, giftItem = ?, reason = ?, cost = ? WHERE id = ?";
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			st.setInt(1, x.getId());
-			st.setString(2, x.getRecipient());
-			st.setString(3, x.getGiftItem());
-			st.setString(4, x.getReason());
-			st.setDouble(5, x.getCost());
+			
+			st.setString(1, x.getRecipient());
+			st.setString(2, x.getGiftItem());
+			st.setString(3, x.getReason());
+			st.setDouble(4, x.getCost());
+			st.setInt(5, x.getId());
 			st.executeUpdate();
 
 			conn.commit();
@@ -234,22 +235,22 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		return xmasListDelete;
 	}
 
-//	@Override
-//	public List<XmasList> returnList() {
-//		// TODO Auto-generated method stub
-//		return xl;
-//	}
-//
-//	@Override
-//	public XmasList findXmasListById(int id) {
-//		XmasList x = null;
-//		for (XmasList xmasList : xl) {
-//			if (xmasList.getId() == id) {
-//				x = xmasList;
-//			}
-//		}
-//		return x;
-//	}
+	@Override
+	public List<XmasList> returnList() {
+		// TODO Auto-generated method stub
+		return xl;
+	}
+
+	@Override
+	public XmasList findXmasListById(int id) {
+		XmasList x = null;
+		for (XmasList xmasList : xl) {
+			if (xmasList.getId() == id) {
+				x = xmasList;
+			}
+		}
+		return x;
+	}
 
 //	@Override
 //	public void deleteXmasList(int id) {
