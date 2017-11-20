@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 @Primary
 public class XmasListDBDAOImpl implements XmasListDAO {
-	private static final String url = "jbdc:mysql://localhost:3306/xmasListDB";
+	private static final String url = "jdbc:mysql://localhost:3306/omg";
 	private String user = "giver";
 	private String pwd = "giver";
 	private List<XmasList> xl = new ArrayList<>();
@@ -34,7 +34,7 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		XmasList xl = null;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pwd);
-			String sql = "SELECT id, recipient, giftItem, reason, cost " + " FROM xmasList WHERE id = ?";
+			String sql = "SELECT id, recipient, giftItem, reason, cost " + " FROM omg WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
@@ -59,12 +59,12 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 	public List<XmasList> getAllXmasLists() {
 		xl = new ArrayList();
 		XmasList xmasList = null;
-		int id = 0;
+		int id = 1;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pwd);
-			String sql = "SELECT id, recipient, giftItem, reason, cost FROM xmasList";
+			String sql = "SELECT id, recipient, giftItem, reason, cost FROM omg";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, id);
+//			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				id = rs.getInt(1);
@@ -72,7 +72,9 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 				String giftItem = rs.getString(3);
 				String reason = rs.getString(4);
 				Double cost = rs.getDouble(5);
+				xmasList = new XmasList(id, recipient, giftItem, reason, cost);
 				xl.add(xmasList);
+				System.out.println(xmasList);
 			}
 			rs.close();
 			stmt.close();
@@ -93,7 +95,7 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		try {
 			conn = DriverManager.getConnection(url, user, pwd);
 			conn.setAutoCommit(false);
-			sql = "INSERT INTO xmasList (id, recipient, giftItem, reason, cost) VALUES (?, ?, ?, ?, ?)";
+			sql = "INSERT INTO omg (id, recipient, giftItem, reason, cost) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.setInt(1, xmasList.getId());
 			st.setString(2, xmasList.getRecipient());
@@ -106,7 +108,7 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 			if (keys.next()) {
 				int id = keys.getInt(1);
 				xmasList.setId(id);
-				sql = "SELECT id, recipient, giftItem, reason, cost FROM  xmasList WHERE id = ?";
+				sql = "SELECT id, recipient, giftItem, reason, cost FROM omg WHERE id = ?";
 				rs = st.executeQuery();
 				st.setInt(1, id);
 				if (rs.next()) {
@@ -146,7 +148,7 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		try {
 			conn = DriverManager.getConnection(url, user, pwd);
 			conn.setAutoCommit(false);
-			sql = "UPDATE xmasList SET recipient = ?, giftItem = ?, reason = ?, cost = ?)";
+			sql = "UPDATE omg SET recipient = ?, giftItem = ?, reason = ?, cost = ?)";
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.setInt(1, x.getId());
 			st.setString(2, x.getRecipient());
@@ -179,7 +181,7 @@ public class XmasListDBDAOImpl implements XmasListDAO {
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pwd);
 				conn.setAutoCommit(false);
-				String sql = "DELETE from film WHERE id = ?";
+				String sql = "DELETE from omg WHERE id = ?";
 				PreparedStatement st = conn.prepareStatement(sql);
 				st.setInt(1, id);
 				st.executeUpdate();

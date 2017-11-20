@@ -27,28 +27,23 @@
 //		xmasLists.put(id, new XmasList(id++, "Baby Sister", "nothing", "she won't remember anyway", 0.0));
 //	}
 //
-////	@Override
-////	public XmasList addXmasList(XmasList x) {
-////		x.setId(id++);
-////		return xmasLists.put(x.getId(), x);
-////	}
 //	@Override
-//	public void addXmasListToDB(XmasList xmasList) {
-//		// TODO Auto-generated method stub
-//		
+//	public XmasList getXmasListById(int id) {
+//		return xmasLists.get(id);
 //	}
-//
+
 //	@Override
 //	public List<XmasList> getAllXmasLists() {
 //		//trying to understand 
 //		return new ArrayList<XmasList>(xmasLists.values());
 //	}
-//
-//	@Override
-//	public XmasList getXmasListById(int id) {
-//		return xmasLists.get(id);
-//	}
-//
+
+////	@Override
+////	public XmasList addXmasList(XmasList x) {
+////		x.setId(id++);
+////		return xmasLists.put(x.getId(), x);
+////	}
+
 //	@Override
 //	public XmasList updateXmasList(XmasList x) {
 //		return xmasLists.put(x.getId(), x);
@@ -61,12 +56,8 @@
 //
 //	@Override
 //	public void deleteXmasList(int id) {
-//		// TODO Auto-generated method stub
-//		
+//		// TODO Auto-generated method stub	
 //	}
-//
-//	
-//	
 //	
 //}
 //

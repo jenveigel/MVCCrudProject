@@ -24,14 +24,14 @@
 		<p>All Christmas Lists</p>
 		</p>
 	</h1>
-
-	<%-- <div>
+ 
+<%--  <div>
 Recipient:<form:select path="recipient">
 		<c:forEach var="recipient" items="${xmasList}">
 			<form:option value="${xmasList.recipient}">${xmasList.recipient}</form:option>
 		</c:forEach>
 		</form:select>
-</div> --%>
+</div>   --%>
 
 	<table>
 		<tr>
